@@ -2,7 +2,7 @@
 
 # Esan Farmers
 
-Agrochemical shop and farmer-training site for Esan, Edo State. Farmers browse products with label and NAFDAC details, order or register for training, and the request is saved in the database and handed to WhatsApp. The owner manages everything from `/admin`.
+Agro-chemical shop, Fumigation Services  and farmer-training site for Esan, Edo State, to the world. Farmers browse products with label and NAFDAC details, order or register for training, and the request is saved in the database and handed to WhatsApp. The owner manages everything from `/admin`.
 
 ## How the pieces fit
 
@@ -23,15 +23,3 @@ ADMIN_PASSWORD=yourpass BUSINESS_WHATSAPP=234XXXXXXXXXX uvicorn app.main:app --r
 pytest
 ```
 
-## Deploy (Render + Neon Postgres)
-1. Create a free Postgres database on neon.tech and copy its connection string.
-2. On render.com choose New > Blueprint and pick this repo (uses `render.yaml`).
-3. Set `DATABASE_URL`, `ADMIN_PASSWORD`, `BUSINESS_WHATSAPP`. `SECRET_KEY` is generated.
-4. Open `/admin/login` and replace the sample products with real stock.
-
-## Demo on GitHub Pages
-Repo Settings > Pages > Deploy from branch > `main` and folder `/docs`.
-
-## Before launch
-- Replace sample products, prices and NAFDAC numbers in `app/seed.py` (or via `/admin/products`)
-- Never commit `.env` or a real password; keep secrets in Render's environment settings
