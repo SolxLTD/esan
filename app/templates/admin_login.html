@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Admin login</h1>
+{% if error %}<div class="box warn">{{ error }}</div>{% endif %}
+<form method="post" action="/admin/login">
+  <input name="password" type="password" placeholder="Password" required autofocus>
+  <button>Log in</button>
+</form>
+{% endblock %}

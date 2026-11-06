@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Esan Farmers · Agrochemicals & Training{% endblock %}</title>
+  <link rel="icon" type="image/png" href="/static/favicon.png">
+  <link rel="apple-touch-icon" href="/static/icon-192.png">
+  <meta name="theme-color" content="#2f7d32">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <a class="brand logo-pill" href="/"><img src="/static/logo.png" alt="Esan Farmer"></a>
+    <span><a href="/">Shop</a> <a href="/training">Training</a></span>
+  </header>
+  <main>{% block content %}{% endblock %}</main>
+  <footer>
+    <p><strong>Safety first:</strong> always read the label, wear protective gear, and keep chemicals away from children and food.</p>
+    <p>Orders and bookings are confirmed on WhatsApp.</p>
+  </footer>
+</body>
+</html>

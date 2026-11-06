@@ -1,0 +1,6 @@
+<a class="card" href="/product/{{ p.id }}">
+  <div class="thumb">{{ p.category[0] }}</div>
+  <strong>{{ p.name }}</strong>
+  <span class="price">{{ p.price|naira }} · {{ p.pack }}</span>
+  {% if not p.in_stock %}<small>Out of stock</small>{% elif p.active_ingredient %}<small>{{ p.active_ingredient }}</small>{% endif %}
+</a>

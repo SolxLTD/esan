@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Products</h1>
+<p><a href="/admin">← Dashboard</a></p>
+<h2>Add a product</h2>
+<form method="post" action="/admin/products">
+  <input name="name" placeholder="Product name" required>
+  <select name="category">{% for c in CATEGORIES %}<option>{{ c }}</option>{% endfor %}</select>
+  <input name="price" type="number" min="0" placeholder="Price (₦)" required>
+  <input name="pack" placeholder="Pack size (1L, 50kg bag…)" required>
+  <input name="active_ingredient" placeholder="Active ingredient">
+  <input name="nafdac_no" placeholder="NAFDAC registration no.">
+  <input name="use_for" placeholder="Used for (crop / pest / purpose)">
+  <input name="directions" placeholder="Directions (copy from label)">
+  <button>Add product</button>
+</form>
+<h2>All products</h2>
+{% for p in products %}
+<div class="box">
+  <strong>{{ p.name }}</strong> <small>{{ p.pack }} · {{ 'in stock' if p.in_stock else 'OUT OF STOCK' }}</small>
+  <form method="post" action="/admin/products/{{ p.id }}/price"><input name="price" type="number" min="0" value="{{ p.price }}"><button>Update price</button></form>
+  <form method="post" action="/admin/products/{{ p.id }}/stock"><button>{{ 'Mark out of stock' if p.in_stock else 'Mark in stock' }}</button></form>
+  <form method="post" action="/admin/products/{{ p.id }}/delete" onsubmit="return confirm('Delete this product?')"><button>Delete</button></form>
+</div>
+{% endfor %}
+{% endblock %}

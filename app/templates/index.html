@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1>Agrochemicals & training for higher yields</h1>
+  <p>Quality inputs, plus hands-on training so you use them safely and correctly.</p>
+  <form method="get">
+    <input name="q" placeholder="Search a product or problem (e.g. maize weeds)" value="{{ q }}">
+    <button>Search</button>
+  </form>
+</section>
+<nav class="chips">
+  <a href="/" class="{{ '' if category else 'on' }}">All</a>
+  {% for c in CATEGORIES %}<a href="/?category={{ c|urlencode }}" class="{{ 'on' if c == category else '' }}">{{ c }}</a>{% endfor %}
+</nav>
+{% if not q and not category %}
+<h2>Hot picks</h2>
+<div class="grid">{% for p in featured %}{% include "_card.html" %}{% endfor %}</div>
+{% endif %}
+<h2>{{ category or "All products" }}</h2>
+<div class="grid">{% for p in products %}{% include "_card.html" %}{% else %}<p>Nothing found.</p>{% endfor %}</div>
+{% if not q and not category %}
+<h2>Upcoming training</h2>
+{% for t in trainings %}
+<div class="box"><strong>{{ t.title }}</strong><br><small>{{ t.duration }} · {{ t.price|naira }}</small></div>
+{% endfor %}
+<a class="btn" href="/training">See all courses</a>
+{% endif %}
+{% endblock %}

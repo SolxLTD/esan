@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Training · Esan Farmers{% endblock %}
+{% block content %}
+<h1>Farmer training</h1>
+<p>Learn to choose, mix and apply agrochemicals safely and get more from every naira spent.</p>
+{% for t in items %}
+<div class="box">
+  <strong>{{ t.title }}</strong>
+  <p>{{ t.description }}</p>
+  <small>{{ t.duration }} · {{ t.price|naira }} · {{ t.location }} · {{ t.next_date }}</small>
+  <form method="post" action="/register/{{ t.id }}">
+    <input name="customer_name" placeholder="Your name" required maxlength="80">
+    <input name="phone" type="tel" placeholder="Phone (e.g. 0803…)" required>
+    <button>Register on WhatsApp</button>
+  </form>
+</div>
+{% endfor %}
+{% endblock %}

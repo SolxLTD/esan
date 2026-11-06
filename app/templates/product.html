@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{{ p.name }} · Esan Farmers{% endblock %}
+{% block content %}
+<a href="/">← Back</a>
+<div class="detail">
+  <div class="thumb big">{{ p.category[0] }}</div>
+  <h1>{{ p.name }}</h1>
+  <p class="price">{{ p.price|naira }} · {{ p.pack }}</p>
+  <table>
+    {% if p.active_ingredient %}<tr><td>Active ingredient</td><td>{{ p.active_ingredient }}</td></tr>{% endif %}
+    <tr><td>Category</td><td>{{ p.category }}</td></tr>
+    {% if p.use_for %}<tr><td>Used for</td><td>{{ p.use_for }}</td></tr>{% endif %}
+    {% if p.nafdac_no %}<tr><td>NAFDAC No.</td><td>{{ p.nafdac_no }}</td></tr>{% endif %}
+    {% if p.directions %}<tr><td>Directions</td><td>{{ p.directions }}</td></tr>{% endif %}
+  </table>
+  <div class="box warn">Read and follow the label. Wear gloves, mask and goggles when mixing or spraying. Not sure how to use it? <a href="/training">Join a training</a>.</div>
+  {% if p.in_stock %}
+  <h2>Order</h2>
+  <form method="post" action="/order/{{ p.id }}">
+    <input name="customer_name" placeholder="Your name" required maxlength="80">
+    <input name="phone" type="tel" placeholder="Phone (e.g. 0803…)" required>
+    <input name="qty" type="number" min="1" value="1" required>
+    <input name="note" placeholder="Delivery location or note" maxlength="300">
+    <button>Send order on WhatsApp</button>
+  </form>
+  {% else %}<div class="box">Currently out of stock. <a href="{{ wa('Hello Esan Farmers, when will ' ~ p.name ~ ' be available?') }}">Ask on WhatsApp</a></div>{% endif %}
+</div>
+{% endblock %}

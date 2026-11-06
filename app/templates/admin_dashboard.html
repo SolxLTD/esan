@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Dashboard</h1>
+<p><a href="/admin/products">Manage products</a> · <a href="/admin/logout">Log out</a></p>
+<div class="box"><strong>{{ new_orders }}</strong> new orders · <strong>{{ new_regs }}</strong> new registrations</div>
+<h2>Orders</h2>
+{% for o in orders %}
+<div class="box">
+  <strong>#{{ o.id }} · {{ o.qty }} × {{ o.product_name }}</strong><br>
+  {{ o.customer_name }} · <a href="https://wa.me/{{ o.phone }}">{{ o.phone }}</a><br>
+  {% if o.note %}<small>{{ o.note }}</small><br>{% endif %}
+  <small>{{ o.created_at.strftime('%d %b %Y %H:%M') }} UTC</small>
+  <form method="post" action="/admin/orders/{{ o.id }}/status">
+    <select name="status" onchange="this.form.submit()">{% for st in ORDER_STATUSES %}<option {{ 'selected' if st == o.status }}>{{ st }}</option>{% endfor %}</select>
+  </form>
+</div>
+{% else %}<p>No orders yet.</p>{% endfor %}
+<h2>Training registrations</h2>
+{% for r in regs %}
+<div class="box">
+  <strong>#{{ r.id }} · {{ r.training_title }}</strong><br>
+  {{ r.customer_name }} · <a href="https://wa.me/{{ r.phone }}">{{ r.phone }}</a><br>
+  <small>{{ r.created_at.strftime('%d %b %Y %H:%M') }} UTC</small>
+  <form method="post" action="/admin/registrations/{{ r.id }}/status">
+    <select name="status" onchange="this.form.submit()">{% for st in ORDER_STATUSES %}<option {{ 'selected' if st == r.status }}>{{ st }}</option>{% endfor %}</select>
+  </form>
+</div>
+{% else %}<p>No registrations yet.</p>{% endfor %}
+{% endblock %}
