@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: esanfarmers
+    runtime: docker
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        sync: false   # paste your Postgres connection string
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: BUSINESS_WHATSAPP
+        sync: false   # e.g. 2348012345678
+      - key: SECRET_KEY
+        generateValue: true
+      - key: HTTPS_ONLY
+        value: "1"
