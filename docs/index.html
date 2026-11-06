@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Esan Farmers</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+:root{--bg:#f7f8f4;--card:#fff;--ink:#1d2a1e;--mut:#667;--g:#2f7d32;--soft:#e4f0df;--line:#e1e6dd;--warn:#fff6e0;--warnl:#f0d58a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121712;--card:#1b231b;--ink:#e8efe6;--mut:#9aa89a;--g:#5fb863;--soft:#1e2d1e;--line:#2b362b;--warn:#2d2813;--warnl:#5a4d1a}}
+:root[data-theme="dark"]{--bg:#121712;--card:#1b231b;--ink:#e8efe6;--mut:#9aa89a;--g:#5fb863;--soft:#1e2d1e;--line:#2b362b;--warn:#2d2813;--warnl:#5a4d1a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,sans-serif;line-height:1.5}
+header{position:sticky;top:env(safe-area-inset-top,0px);display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--g);color:#fff;z-index:5}
+header b{font-size:1.1rem}
+header nav button{background:none;border:0;color:#fff;font-size:1rem;margin-left:14px;padding:4px}
+main{max-width:900px;margin:0 auto;padding:16px}
+.hero{background:var(--soft);border-radius:12px;padding:18px;margin-bottom:12px}
+.hero h1{margin:0 0 6px;font-size:1.35rem}
+.hero p{margin:0 0 10px;color:var(--mut)}
+input,button.b{display:block;width:100%;padding:12px;font-size:16px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);margin:6px 0}
+button.b,a.b{background:var(--g);color:#fff;border:0;text-align:center;text-decoration:none;cursor:pointer;display:block;padding:12px;border-radius:8px;font-size:16px;margin:8px 0}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:4px 0 8px}
+.chips button{white-space:nowrap;padding:7px 13px;border-radius:20px;background:var(--card);border:1px solid var(--line);color:var(--ink);font-size:.9rem}
+.chips button.on{background:var(--g);color:#fff;border-color:var(--g)}
+h2{font-size:1.1rem;margin:18px 0 8px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(4,1fr)}}
+.card{text-align:left;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;color:var(--ink);font:inherit;display:flex;flex-direction:column;gap:2px;cursor:pointer}
+.thumb{height:78px;border-radius:8px;background:var(--soft);display:grid;place-items:center;font-size:2rem;margin-bottom:6px}
+.price{color:var(--g);font-weight:700}
+small,.mut{color:var(--mut)}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;margin:10px 0}
+.box.warn{background:var(--warn);border-color:var(--warnl)}
+table{width:100%;border-collapse:collapse;margin:10px 0}
+td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top}td:first-child{color:var(--mut);width:38%}
+.back{background:none;border:0;color:var(--g);font-size:1rem;padding:4px 0}
+footer{text-align:center;padding:18px 16px 28px;color:var(--mut);font-size:.85rem}
+</style>
+</head>
+<body>
+<header><b style="background:#fff;border-radius:10px;padding:3px 10px;display:inline-block"><img src="logo.png" alt="Esan Farmer" style="height:40px;display:block"></b><nav><button onclick="go('shop')">Shop</button><button onclick="go('training')">Training</button></nav></header>
+<main id="app"></main>
+<footer><p><b>Safety first:</b> always read the label, wear protective gear, and keep chemicals away from children and food.</p><p>Prices are indicative and may change. Final price and availability are confirmed on WhatsApp.</p></footer>
+<script>
+const WHATSAPP="2340000000000"; // replace with your business number, e.g. 2348012345678
+const CATS=["Herbicides","Insecticides","Fungicides","Fertilizers","Sprayers & Safety Gear"];
+const ICON={"Herbicides":"🌿","Insecticides":"🐛","Fungicides":"🍂","Fertilizers":"🌱","Sprayers & Safety Gear":"🧤"};
+// SAMPLE DATA: replace prices, NAFDAC numbers and directions with your real stock
+const P=[
+{id:1,n:"Glyphosate 360SL Herbicide",c:"Herbicides",p:6500,k:"1L",a:"Glyphosate",u:"Pre-plant weed clearing, plantation weeding",f:1},
+{id:2,n:"Selective Maize Herbicide",c:"Herbicides",p:7500,k:"1L",a:"Atrazine",u:"Weed control in maize"},
+{id:3,n:"Cypermethrin Insecticide",c:"Insecticides",p:4500,k:"1L",a:"Cypermethrin",u:"Caterpillars, aphids and beetles on vegetables and cereals",f:1},
+{id:4,n:"Lambda-cyhalothrin Insecticide",c:"Insecticides",p:5200,k:"1L",a:"Lambda-cyhalothrin",u:"Broad-spectrum insect control"},
+{id:5,n:"Mancozeb Fungicide",c:"Fungicides",p:3800,k:"1kg",a:"Mancozeb",u:"Blight and leaf spot on tomato, pepper and vegetables",f:1},
+{id:6,n:"NPK 15-15-15",c:"Fertilizers",p:55000,k:"50kg bag",a:"N-P-K 15-15-15",u:"Basal fertilizer for most crops"},
+{id:7,n:"Urea 46%",c:"Fertilizers",p:45000,k:"50kg bag",a:"Nitrogen 46%",u:"Top dressing for maize and vegetables",f:1},
+{id:8,n:"16L Knapsack Sprayer",c:"Sprayers & Safety Gear",p:22000,k:"1 unit",a:"",u:"Manual spraying of chemicals"},
+{id:9,n:"Applicator Safety Kit",c:"Sprayers & Safety Gear",p:9500,k:"1 kit",a:"",u:"Gloves, mask, goggles and apron"},
+{id:10,n:"2,4-D Amine 720SL Herbicide",c:"Herbicides",p:6000,k:"1L",a:"2,4-D amine",u:"Broadleaf weeds in maize and rice"},
+{id:11,n:"Nicosulfuron 40OD Herbicide",c:"Herbicides",p:9500,k:"1L",a:"Nicosulfuron",u:"Post-emergence grass control in maize"},
+{id:12,n:"Glufosinate-ammonium 150SL",c:"Herbicides",p:12000,k:"1L",a:"Glufosinate-ammonium",u:"Non-selective weed control in plantations and fallow land"},
+{id:13,n:"Emamectin Benzoate Insecticide",c:"Insecticides",p:6500,k:"100g",a:"Emamectin benzoate",u:"Fall armyworm and caterpillars on maize and vegetables",f:1},
+{id:14,n:"Imidacloprid 200SL Insecticide",c:"Insecticides",p:8000,k:"1L",a:"Imidacloprid",u:"Sucking pests such as aphids and whiteflies"},
+{id:15,n:"Neem Oil (Organic)",c:"Insecticides",p:18000,k:"1L",a:"Azadirachtin (neem)",u:"Organic control of many insect pests"},
+{id:16,n:"Metalaxyl + Mancozeb Fungicide",c:"Fungicides",p:7000,k:"1kg",a:"Metalaxyl + Mancozeb",u:"Downy mildew and late blight in tomato, pepper and vegetables"},
+{id:17,n:"Copper Hydroxide Fungicide",c:"Fungicides",p:6500,k:"1kg",a:"Copper hydroxide",u:"Bacterial and fungal diseases, including cocoa and vegetables"},
+{id:18,n:"NPK 20-10-10",c:"Fertilizers",p:55000,k:"50kg bag",a:"N-P-K 20-10-10",u:"Vegetative growth in maize, cassava and vegetables"},
+{id:19,n:"Muriate of Potash (MOP)",c:"Fertilizers",p:50000,k:"50kg bag",a:"Potassium chloride",u:"Fruiting, tuber bulking and oil palm"},
+{id:20,n:"Organic Compost",c:"Fertilizers",p:8000,k:"25kg bag",a:"",u:"Soil conditioning and organic farming"},
+{id:21,n:"Nitrile Gloves (Chemical-resistant)",c:"Sprayers & Safety Gear",p:1500,k:"1 pair",a:"",u:"Hand protection when mixing and spraying"},
+{id:22,n:"Respirator Mask with Filters",c:"Sprayers & Safety Gear",p:3500,k:"1 unit",a:"",u:"Protection from spray mist and fumes"}];
+const T=[
+{t:"Safe Agrochemical Handling & Application",d:"Reading labels, correct dilution and calibration, protective gear, storage, disposal of containers, re-entry and pre-harvest intervals.",du:"1 day",p:10000},
+{t:"Weed, Pest & Disease Management for Maize and Vegetables",d:"Identifying common problems, choosing the right product, timing of application and avoiding resistance.",du:"2 days",p:20000},
+{t:"Fertilizer Programs for Higher Yield",d:"Soil basics, NPK versus straight fertilizers, rates, timing and placement.",du:"1 day",p:12000}];
+const naira=v=>"₦"+v.toLocaleString("en-NG");
+const wa=m=>"https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(m);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let S={view:"shop",q:"",cat:"",pid:null};
+const card=p=>`<button class="card" onclick="openP(${p.id})"><div class="thumb">${ICON[p.c]}</div><b>${esc(p.n)}</b><span class="price">${naira(p.p)} · ${esc(p.k)}</span>${p.a?`<small>${esc(p.a)}</small>`:""}</button>`;
+function go(v){S.view=v;S.pid=null;render();scrollTo(0,0)}
+function openP(id){S.pid=id;S.view="product";render();scrollTo(0,0)}
+function setCat(c){S.cat=c;render()}
+function setQ(v){S.q=v;renderList()}
+function list(){const q=S.q.toLowerCase();return P.filter(p=>(!S.cat||p.c===S.cat)&&(!q||(p.n+" "+p.u+" "+p.a).toLowerCase().includes(q)))}
+function renderList(){const el=document.getElementById("list");if(el){const l=list();el.innerHTML=l.length?l.map(card).join(""):"<p class='mut'>Nothing found.</p>"}}
+function render(){
+const a=document.getElementById("app");
+if(S.view==="product"){const p=P.find(x=>x.id===S.pid);
+a.innerHTML=`<button class="back" onclick="go('shop')">← Back</button><div class="thumb" style="height:150px;font-size:3.5rem">${ICON[p.c]}</div><h1>${esc(p.n)}</h1><p class="price">${naira(p.p)} · ${esc(p.k)}</p><table>${p.a?`<tr><td>Active ingredient</td><td>${esc(p.a)}</td></tr>`:""}<tr><td>Category</td><td>${esc(p.c)}</td></tr><tr><td>Used for</td><td>${esc(p.u)}</td></tr><tr><td>NAFDAC No.</td><td>Add NAFDAC number</td></tr><tr><td>Directions</td><td>Follow the product label</td></tr></table><div class="box warn">Read and follow the label. Wear gloves, mask and goggles when mixing or spraying. Not sure how to use it? <a href="#" onclick="go('training');return false" style="color:var(--g)">Join a training</a>.</div><a class="b" target="_blank" rel="noopener" href="${wa("Hello Esan Farmers, I want to order: "+p.n+" ("+p.k+")")}">Order on WhatsApp</a>`;return}
+if(S.view==="training"){
+a.innerHTML=`<h1>Farmer training</h1><p class="mut">Learn to choose, mix and apply agrochemicals safely and get more from every naira spent.</p>`+T.map(t=>`<div class="box"><b>${esc(t.t)}</b><p>${esc(t.d)}</p><small>${esc(t.du)} · ${naira(t.p)} · Esan · Dates to be announced</small><a class="b" target="_blank" rel="noopener" href="${wa("Hello Esan Farmers, I want to register for: "+t.t)}">Register on WhatsApp</a></div>`).join("");return}
+a.innerHTML=`<section class="hero"><h1>Agrochemicals & training for higher yields</h1><p>Quality inputs, plus hands-on training so you use them safely and correctly.</p><input id="q" type="search" placeholder="Search a product or problem (e.g. maize weeds)" value="${esc(S.q)}" oninput="setQ(this.value)"></section>
+<nav class="chips"><button class="${S.cat?"":"on"}" onclick="setCat('')">All</button>${CATS.map(c=>`<button class="${S.cat===c?"on":""}" onclick="setCat('${c.replace(/'/g,"")}')">${esc(c)}</button>`).join("")}</nav>
+${!S.cat&&!S.q?`<h2>Hot picks</h2><div class="grid">${P.filter(p=>p.f).slice(0,4).map(card).join("")}</div>`:""}
+<h2>${S.cat||"All products"}</h2><div class="grid" id="list"></div>
+${!S.cat&&!S.q?`<h2>Training</h2>${T.slice(0,2).map(t=>`<div class="box"><b>${esc(t.t)}</b><br><small>${esc(t.du)} · ${naira(t.p)}</small></div>`).join("")}<button class="b" onclick="go('training')">See all courses</button>`:""}`;
+renderList()}
+render();
+</script>
+</body>
+</html>
