@@ -1,6 +1,17 @@
-<a class="card" href="/product/{{ p.id }}">
-  <div class="thumb">{{ p.category[0] }}</div>
-  <strong>{{ p.name }}</strong>
-  <span class="price">{{ p.price|naira }} · {{ p.pack }}</span>
-  {% if not p.in_stock %}<small>Out of stock</small>{% elif p.active_ingredient %}<small>{{ p.active_ingredient }}</small>{% endif %}
-</a>
+<article class="card">
+  <a class="card-info" href="/product/{{ p.id }}">
+    {% if photo_by_product.get(p.id) %}
+    <img class="thumb product-thumb" src="{{ photo_by_product.get(p.id) }}" alt="{{ p.name }}">
+    {% else %}
+    <div class="thumb">{{ p.category[0] }}</div>
+    {% endif %}
+    <strong>{{ p.name }}</strong>
+    <span>{{ p.description or p.use_for or p.category }}</span>
+    {% if not p.in_stock %}<small>Out of stock</small>{% elif p.active_ingredient %}<small>{{ p.active_ingredient }}</small>{% endif %}
+  </a>
+  {% if p.in_stock %}
+  <a class="btn order-button" href="{{ wa('Hello Esan Farmers, I would like to order ' ~ p.name ~ ' (' ~ p.pack ~ '). Please confirm availability and price.') }}" target="_blank" rel="noopener noreferrer">Order now</a>
+  {% else %}
+  <a class="btn order-button" href="{{ wa('Hello Esan Farmers, when will ' ~ p.name ~ ' be available?') }}" target="_blank" rel="noopener noreferrer">Ask availability</a>
+  {% endif %}
+</article>

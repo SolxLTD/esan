@@ -26,4 +26,14 @@
   </form>
 </div>
 {% else %}<p>No registrations yet.</p>{% endfor %}
+<h2>Members</h2>
+{% for member in members %}
+<div class="box">
+  <strong>#{{ member.id }} · {{ member.full_name }}</strong><br>
+  <a href="https://wa.me/{{ member.phone }}">{{ member.phone }}</a>
+  {% if member.email %} · <a href="mailto:{{ member.email }}">{{ member.email }}</a>{% endif %}
+  {% if member.interest %}<br><small>Interested in: {{ member.interest }}</small>{% endif %}
+  <br><small>Joined {{ member.created_at.strftime('%d %b %Y %H:%M') }} UTC</small>
+</div>
+{% else %}<p>No members yet.</p>{% endfor %}
 {% endblock %}

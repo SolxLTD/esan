@@ -1,11 +1,49 @@
 {% extends "base.html" %}
 {% block content %}
-<section class="hero">
-  <h1>Agrochemicals & training for higher yields</h1>
-  <p>Quality inputs, plus hands-on training so you use them safely and correctly.</p>
+<section class="hero home-hero">
+  <div class="home-hero-copy">
+    <p class="eyebrow">ESAN FARMERS · ESAN, EDO STATE</p>
+    <h1>Growing better farms and a healthier environment.</h1>
+    <p>Practical support for food production, trusted agricultural inputs, farmer education and environmental care.</p>
+    <div class="hero-actions">
+      <a class="btn" href="/register">Become a member</a>
+      <a class="btn btn-light" href="/training">Explore training</a>
+    </div>
+  </div>
+  <img class="hero-illustration" src="/static/images/farm-hero.svg" alt="Farmer tending a thriving green field">
+</section>
+<section id="services" class="section">
+  <p class="eyebrow">WHAT WE DO</p>
+  <h2>Support for every step of the farm journey</h2>
+  <div class="service-grid">
+    <article class="service-card">
+      <img class="service-image" src="/static/images/food-production.svg" alt="Maize and vegetables growing on a healthy farm">
+      <h3>Food production</h3>
+      <p>Build productive farms with practical crop-production guidance, better growing practices and access to essential inputs.</p>
+    </article>
+    <article class="service-card">
+      <img class="service-image" src="/static/images/safe-farming.svg" alt="Farmer wearing protective clothing while inspecting crops">
+      <h3>Agrochemical supplies</h3>
+      <p>Find crop-protection products, fertilizers and safety equipment, with training to support responsible use.</p>
+      <a href="#shop">Browse products</a>
+    </article>
+    <article class="service-card">
+      <img class="service-image" src="/static/images/fumigation-service.svg" alt="Trained fumigation professional preparing to service a building">
+      <h3>Environmental services</h3>
+      <p>Indoor and outdoor site fumigation for homes, businesses and other facilities. Contact us to discuss the site, service and safety requirements.</p>
+      <div class="service-actions">
+        <a href="{{ wa('Hello Esan Farmers, I would like to ask about indoor fumigation services.') }}" target="_blank" rel="noopener noreferrer">Indoor fumigation</a>
+        <a href="{{ wa('Hello Esan Farmers, I would like to ask about outdoor fumigation services.') }}" target="_blank" rel="noopener noreferrer">Outdoor fumigation</a>
+      </div>
+    </article>
+  </div>
+</section>
+<section class="hero search-hero">
+  <h2>Looking for a farm input?</h2>
+  <p>Search products by name or the crop problem you want to address.</p>
   <form method="get">
-    <input name="q" placeholder="Search a product or problem (e.g. maize weeds)" value="{{ q }}">
-    <button>Search</button>
+    <input name="q" aria-label="Search products" placeholder="e.g. maize weeds" value="{{ q }}">
+    <button>Search products</button>
   </form>
 </section>
 <nav class="chips">
@@ -13,16 +51,39 @@
   {% for c in CATEGORIES %}<a href="/?category={{ c|urlencode }}" class="{{ 'on' if c == category else '' }}">{{ c }}</a>{% endfor %}
 </nav>
 {% if not q and not category %}
-<h2>Hot picks</h2>
+<section class="section sample-showcase" aria-labelledby="sample-photos-heading">
+  <p class="eyebrow">PRODUCT SAMPLES</p>
+  <h2 id="sample-photos-heading">A look at some farm-input products</h2>
+  <div class="sample-grid">
+    <figure class="sample-card">
+      <img src="/static/images/product-samples/fipronil-100-sc.jpeg" alt="Fipronil 100 SC container">
+      <figcaption>Fipronil 100 SC</figcaption>
+    </figure>
+    <figure class="sample-card">
+      <img src="/static/images/product-samples/imidacloprid-20-sl.jpeg" alt="Imidacloprid 20% SL bottle">
+      <figcaption>Imidacloprid 20% SL</figcaption>
+    </figure>
+    <figure class="sample-card">
+      <img src="/static/images/product-samples/agrochemical-assortment.jpeg" alt="Assortment of agrochemical products">
+      <figcaption>Assorted agrochemical products</figcaption>
+    </figure>
+  </div>
+  <p class="sample-note">Sample photos are for identification only. Packaging, price and availability can vary; confirm current stock and read the product label before ordering.</p>
+</section>
+<h2 id="featured">Popular farm inputs</h2>
 <div class="grid">{% for p in featured %}{% include "_card.html" %}{% endfor %}</div>
 {% endif %}
-<h2>{{ category or "All products" }}</h2>
+<h2 id="shop">{{ category or "All products" }}</h2>
 <div class="grid">{% for p in products %}{% include "_card.html" %}{% else %}<p>Nothing found.</p>{% endfor %}</div>
 {% if not q and not category %}
-<h2>Upcoming training</h2>
+<section class="section training-promo">
+<p class="eyebrow">LEARN WITH ESAN FARMERS</p>
+<h2>Learn practical skills for a stronger harvest</h2>
+<p>Join a course, read our field guide or explore video lessons to build your farming knowledge.</p>
 {% for t in trainings %}
 <div class="box"><strong>{{ t.title }}</strong><br><small>{{ t.duration }} · {{ t.price|naira }}</small></div>
 {% endfor %}
-<a class="btn" href="/training">See all courses</a>
+<div class="hero-actions"><a class="btn" href="/training">Explore training resources</a><a class="text-link" href="/register">Register as a member</a></div>
+</section>
 {% endif %}
 {% endblock %}

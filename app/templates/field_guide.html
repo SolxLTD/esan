@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Esan Farmers Field Guide · Training{% endblock %}
+{% block content %}
+<article class="guide">
+  <a class="text-link" href="/training">← Back to training</a>
+  <p class="eyebrow">ESAN FARMERS E-BOOK</p>
+  <h1>A practical field guide for Esan farmers</h1>
+  <p class="guide-intro">A concise reference for planning a crop, caring for soil and water, managing common farm problems responsibly and protecting people and the environment.</p>
+  <button class="print-button" type="button" onclick="window.print()">Print or save as PDF</button>
+
+  <section>
+    <img class="guide-image" src="/static/images/food-production.svg" alt="Healthy maize and vegetable crops growing in rows">
+    <h2>1. Plan before planting</h2>
+    <ul>
+      <li>Choose crops suited to your land, local conditions and available markets.</li>
+      <li>Use healthy, suitable seed and plan for land preparation, labour, water and storage.</li>
+      <li>Keep a simple farm record of planting dates, inputs, field observations, harvest and costs.</li>
+    </ul>
+  </section>
+
+  <section>
+    <img class="guide-image" src="/static/images/food-production.svg" alt="Illustration of healthy crops and fertile farm rows">
+    <h2>2. Care for soil and water</h2>
+    <ul>
+      <li>Protect soil cover where practical and avoid leaving soil bare for long periods.</li>
+      <li>Rotate crops and use organic matter to support soil structure and fertility.</li>
+      <li>Reduce erosion by managing runoff and keeping drains and waterways clear of waste.</li>
+      <li>Use water efficiently and keep fertilizers and pesticides away from wells, streams and ponds.</li>
+    </ul>
+  </section>
+
+  <section>
+    <img class="guide-image" src="/static/images/safe-farming.svg" alt="Farmer inspecting crops while wearing protective equipment">
+    <h2>3. Monitor crops and respond early</h2>
+    <ul>
+      <li>Walk through fields regularly and check both healthy and affected plants.</li>
+      <li>Identify the problem before choosing a response; symptoms can have different causes.</li>
+      <li>Use prevention, good field hygiene and appropriate crop practices as part of integrated pest management.</li>
+      <li>Ask a qualified agricultural adviser when the cause or best response is unclear.</li>
+    </ul>
+  </section>
+
+  <section>
+    <img class="guide-image" src="/static/images/safe-farming.svg" alt="Farmer wearing protective mask and clothing">
+    <h2>4. Use agricultural chemicals responsibly</h2>
+    <ul>
+      <li>Use only a registered product suitable for the crop and problem, and follow its label exactly.</li>
+      <li>Wear the protective equipment stated on the label. Keep children, animals, food and water away during handling and application.</li>
+      <li>Never guess a dose, mix products unless the label allows it, or reuse chemical containers.</li>
+      <li>Store products securely in their original labelled containers and dispose of containers as directed by the label and local guidance.</li>
+      <li>Observe all re-entry and pre-harvest intervals on the label.</li>
+    </ul>
+  </section>
+
+  <section>
+    <img class="guide-image" src="/static/images/fumigation-service.svg" alt="Professional service worker inspecting a building exterior">
+    <h2>5. Protect the farm environment</h2>
+    <ul>
+      <li>Prevent chemical spills and runoff, and keep farm waste out of waterways.</li>
+      <li>Maintain buffer areas around sensitive places and follow product-label restrictions.</li>
+      <li>Choose practices that conserve soil, support biodiversity and reduce unnecessary input use.</li>
+      <li>Report serious spills or suspected exposure promptly and follow local emergency guidance.</li>
+    </ul>
+  </section>
+
+  <div class="box warn">
+    <strong>Important:</strong> This guide is general educational information, not a substitute for product labels, local regulations or advice from a qualified agricultural professional.
+  </div>
+  <p><a class="text-link" href="{{ TRAINING_YOUTUBE_URL }}" target="_blank" rel="noopener noreferrer">Explore agricultural video lessons on YouTube →</a></p>
+</article>
+{% endblock %}

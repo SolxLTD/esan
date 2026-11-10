@@ -1,18 +1,80 @@
 {% extends "base.html" %}
 {% block title %}Training · Esan Farmers{% endblock %}
 {% block content %}
-<h1>Farmer training</h1>
-<p>Learn to choose, mix and apply agrochemicals safely and get more from every naira spent.</p>
-{% for t in items %}
-<div class="box">
-  <strong>{{ t.title }}</strong>
-  <p>{{ t.description }}</p>
-  <small>{{ t.duration }} · {{ t.price|naira }} · {{ t.location }} · {{ t.next_date }}</small>
-  <form method="post" action="/register/{{ t.id }}">
-    <input name="customer_name" placeholder="Your name" required maxlength="80">
-    <input name="phone" type="tel" placeholder="Phone (e.g. 0803…)" required>
-    <button>Register on WhatsApp</button>
-  </form>
+<section class="hero">
+  <img class="training-hero-image" src="/static/images/safe-farming.svg" alt="Farmer using protective equipment in the field">
+  <p class="eyebrow">ESAN FARMERS LEARNING</p>
+  <h1>Training and resources for better farming</h1>
+  <p>Learn practical food-production skills, responsible agrochemical use and environmental care.</p>
+  <div class="hero-actions">
+    <a class="btn" href="/training/field-guide">Read the free field guide</a>
+    <a class="btn btn-light" href="{{ TRAINING_YOUTUBE_URL }}" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+  </div>
+</section>
+<section class="resource-grid" aria-label="Learning resources">
+  <article class="box resource-card">
+    <img class="resource-image" src="/static/images/food-production.svg" alt="Illustration of healthy maize and vegetable crops">
+    <p class="eyebrow">E-BOOK</p>
+    <h2>Esan Farmers field guide</h2>
+    <p>A practical online guide to soil, crop care, safe input use and protecting the farm environment. Print or save it as a PDF for later.</p>
+    <a class="text-link" href="/training/field-guide">Open the field guide →</a>
+  </article>
+  <article class="box resource-card">
+    <div class="video-poster">
+      <img class="resource-image" src="/static/images/farm-hero.svg" alt="Illustrated preview of Esan Farmers video lessons">
+      <span class="play-badge" aria-hidden="true">▶</span>
+    </div>
+    <p class="eyebrow">VIDEO LESSONS</p>
+    <h2>Learn on YouTube</h2>
+    <p>Explore agricultural video lessons and demonstrations. The link opens YouTube in a new tab.</p>
+    <a class="text-link" href="{{ TRAINING_YOUTUBE_URL }}" target="_blank" rel="noopener noreferrer">Visit YouTube →</a>
+  </article>
+</section>
+<section class="lesson-slides" aria-labelledby="lesson-slides-title">
+  <div class="section-heading">
+    <p class="eyebrow">QUICK VISUAL LESSONS</p>
+    <h2 id="lesson-slides-title">Farm skills, one step at a time</h2>
+    <p>Scroll through these illustrated lesson slides for a quick refresher.</p>
+  </div>
+  <div class="slide-track">
+    <article class="lesson-slide">
+      <img src="/static/images/food-production.svg" alt="">
+      <div><span class="slide-number">01 / PLAN</span><h3>Start with the crop and the soil</h3><p>Choose suitable crops, prepare healthy soil and plan your planting before the season begins.</p></div>
+    </article>
+    <article class="lesson-slide">
+      <img src="/static/images/safe-farming.svg" alt="">
+      <div><span class="slide-number">02 / PROTECT</span><h3>Put safety before spraying</h3><p>Read the label, wear the specified protective equipment and keep people, food and water away.</p></div>
+    </article>
+    <article class="lesson-slide">
+      <img src="/static/images/fumigation-service.svg" alt="">
+      <div><span class="slide-number">03 / CARE</span><h3>Look after the wider environment</h3><p>Prevent spills and runoff, protect waterways and get qualified help when a problem is unclear.</p></div>
+    </article>
+  </div>
+</section>
+<div class="section-heading">
+  <p class="eyebrow">IN-PERSON COURSES</p>
+  <h2>Register for a training course</h2>
+  <p>Choose a course and send your details. We’ll confirm the schedule and next steps with you.</p>
 </div>
+<section class="course-grid" aria-label="Available farmer courses">
+{% for t in items %}
+<article class="box course-card">
+  <img class="course-image" src="{{ '/static/images/safe-farming.svg' if loop.index == 1 else '/static/images/food-production.svg' }}" alt="">
+  <div class="course-content">
+    <p class="eyebrow">PRACTICAL COURSE · {{ t.duration }}</p>
+    <h3>{{ t.title }}</h3>
+    <p>{{ t.description }}</p>
+    <small>{{ t.price|naira }} · {{ t.location }} · {{ t.next_date }}</small>
+    <form method="post" action="/register/{{ t.id }}">
+      <input name="customer_name" placeholder="Your name" required maxlength="80">
+      <input name="phone" type="tel" placeholder="Phone (e.g. 0803…)" required>
+      <button>Register on WhatsApp</button>
+    </form>
+  </div>
+</article>
 {% endfor %}
+</section>
+<div class="box member-callout">
+  Want to stay connected with Esan Farmers? <a href="/register">Register as a member</a> to hear about our programmes and learning opportunities.
+</div>
 {% endblock %}

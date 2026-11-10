@@ -35,7 +35,9 @@ T = [
 def seed(session):
     for i, (n, c, pr, pk, ai, uf, d) in enumerate(P):
         session.add(Product(name=n, category=c, price=pr, pack=pk, active_ingredient=ai,
-                            nafdac_no="Add NAFDAC no.", use_for=uf, directions=d, featured=i % 3 == 0))
+                            nafdac_no="Add NAFDAC no.", use_for=uf, directions=d,
+                            description=f"{n} in a {pk} pack, for {uf.lower()}. Follow the product label and local guidance.",
+                            featured=i % 3 == 0))
     for t, d, du, pr, nd in T:
         session.add(Training(title=t, description=d, duration=du, price=pr, next_date=nd))
     session.commit()

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-labelledby="title desc">
+  <title id="title">Farmer using protective equipment</title>
+  <desc id="desc">A farmer wears gloves, a mask and protective clothing while inspecting crops and following safe practices.</desc>
+  <rect width="600" height="360" rx="24" fill="#e8f1df"/>
+  <circle cx="493" cy="74" r="34" fill="#f0c65a"/>
+  <path d="M0 209q129-72 270 0t330-1v152H0Z" fill="#a8c67b"/>
+  <path d="M0 271q147-45 300 0t300 0v89H0Z" fill="#5c8a4c"/>
+  <g fill="none" stroke="#4e7e45" stroke-width="7" stroke-linecap="round">
+    <path d="M75 310q8-56 37-68m-14 68q15-75 48-86m319 88q10-51 40-64m-16 67q18-73 48-82"/>
+  </g>
+  <g transform="translate(287 68)">
+    <path d="M-48 103q48-35 96 0l25 128h-145z" fill="#e0b14f"/>
+    <path d="M-35 109h70l18 107h-107z" fill="#38644b"/>
+    <path d="M-30 210h42v76h-42zm45 0h42v76H15z" fill="#30473a"/>
+    <path d="M-43 280h58v13h-64zm51 0h61v13H8z" fill="#50483a"/>
+    <circle cy="53" r="38" fill="#8e593e"/>
+    <path d="M-41 48q0-47 40-49 39 5 41 43l-11 13q-27-19-68-3z" fill="#31503e"/>
+    <path d="M-27 52q27-12 54 0v23q-26 16-54 0z" fill="#b9d6cb" stroke="#55766c" stroke-width="5"/>
+    <path d="M-46 116-89 176m135-61 44 60" fill="none" stroke="#8e593e" stroke-width="17" stroke-linecap="round"/>
+    <path d="M-98 169h27v34h-27zm184 0h27v34H86z" fill="#d6b87b"/>
+    <path d="M-115 214h217" stroke="#54805a" stroke-width="5" stroke-dasharray="9 10"/>
+  </g>
+  <g transform="translate(469 196)">
+    <path d="M0 0h61v74H0z" fill="#fffdf3" stroke="#456b48" stroke-width="5"/>
+    <path d="M13 21h35m-35 14h35m-35 14h25" stroke="#6b9561" stroke-width="5" stroke-linecap="round"/>
+    <path d="m16 62 9 9 20-23" fill="none" stroke="#3b7a46" stroke-width="6" stroke-linecap="round"/>
+  </g>
+</svg>

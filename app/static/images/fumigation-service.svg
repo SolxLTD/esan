@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-labelledby="title desc">
+  <title id="title">Professional site fumigation service</title>
+  <desc id="desc">A trained service professional in protective equipment prepares to inspect a clean building exterior.</desc>
+  <rect width="600" height="360" rx="24" fill="#e9f1e7"/>
+  <circle cx="490" cy="67" r="31" fill="#edc75d"/>
+  <path d="M0 253h600v107H0Z" fill="#9cbd77"/>
+  <path d="M95 129h287v151H95z" fill="#f7f0db" stroke="#607d56" stroke-width="5"/>
+  <path d="m76 135 164-79 161 79" fill="#b8794e" stroke="#75553e" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M126 168h68v63h-68zm148 0h68v63h-68z" fill="#a8d1ca" stroke="#647b64" stroke-width="5"/>
+  <path d="M221 194h41v86h-41z" fill="#8c694d"/>
+  <circle cx="251" cy="238" r="4" fill="#e8d69c"/>
+  <g transform="translate(454 138)">
+    <path d="M-32 69q32-23 64 0l17 87h-99z" fill="#e4b54e"/>
+    <path d="M-25 75h50l11 73h-72z" fill="#456c56"/>
+    <path d="M-20 145h26v59h-26zm29 0h26v59H9z" fill="#354a3c"/>
+    <path d="M-24 202h35v10h-40zm30 0h37v10H6z" fill="#534638"/>
+    <circle cy="34" r="29" fill="#8c573f"/>
+    <path d="M-31 34q2-36 31-37 29 2 32 31l-9 10q-19-13-53-1z" fill="#385346"/>
+    <path d="M-19 37q19-9 38 0v17q-19 12-38 0z" fill="#b4d2c8" stroke="#607b6f" stroke-width="4"/>
+    <path d="M-30 80-58 121m88-41 28 33" fill="none" stroke="#8c573f" stroke-width="13" stroke-linecap="round"/>
+    <path d="M47 109h44v55H47z" fill="#507f62" stroke="#395840" stroke-width="4"/>
+    <path d="M53 109V95q0-15 16-15t16 15v14" fill="none" stroke="#395840" stroke-width="5"/>
+  </g>
+  <path d="M69 286h467" stroke="#6e9559" stroke-width="5" stroke-linecap="round"/>
+</svg>

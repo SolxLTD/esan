@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-labelledby="title desc">
+  <title id="title">Healthy crops ready to grow</title>
+  <desc id="desc">Maize, leafy vegetables and rich soil show a diverse food-producing farm.</desc>
+  <rect width="600" height="360" rx="24" fill="#e7f2dc"/>
+  <circle cx="492" cy="74" r="34" fill="#efc95d"/>
+  <path d="M0 194q126-80 250 0t350-1v167H0Z" fill="#9abb72"/>
+  <path d="M0 252q140-58 300 0t300 0v108H0Z" fill="#527e49"/>
+  <path d="M73 305q38-50 71-52m-36 58q43-71 90-74m191 68q26-50 59-58m-22 60q35-75 79-79" fill="none" stroke="#c1d58a" stroke-width="8" stroke-linecap="round"/>
+  <g stroke="#47713e" stroke-width="8" stroke-linecap="round">
+    <path d="M147 251V92m0 106q-42-49-69-30 26 40 69 44m2-74q35-49 61-28-18 40-61 47"/>
+    <path d="M413 257V127m0 93q-38-44-64-24 22 38 64 42m0-69q33-45 56-23-17 36-56 42"/>
+  </g>
+  <g fill="#e6bb55">
+    <ellipse cx="145" cy="127" rx="13" ry="31"/>
+    <ellipse cx="413" cy="163" rx="12" ry="27"/>
+  </g>
+  <g fill="#6a9c51">
+    <path d="M255 280q-11-67 17-104 25 38 6 104m10 4q-5-73 28-99 18 42-7 101m17 6q14-60 49-73 8 42-27 79"/>
+    <path d="M226 283q-9-47-40-57-7 35 28 64m177 5q13-47 45-52 4 35-30 59"/>
+  </g>
+  <path d="M40 315q120-22 222 1m74 1q106-18 213 1" fill="none" stroke="#d7e5a0" stroke-width="5" stroke-dasharray="11 14"/>
+</svg>

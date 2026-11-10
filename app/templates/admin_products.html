@@ -11,6 +11,7 @@
   <input name="active_ingredient" placeholder="Active ingredient">
   <input name="nafdac_no" placeholder="NAFDAC registration no.">
   <input name="use_for" placeholder="Used for (crop / pest / purpose)">
+  <textarea name="description" placeholder="Product description" rows="3" required></textarea>
   <input name="directions" placeholder="Directions (copy from label)">
   <button>Add product</button>
 </form>
@@ -18,6 +19,12 @@
 {% for p in products %}
 <div class="box">
   <strong>{{ p.name }}</strong> <small>{{ p.pack }} · {{ 'in stock' if p.in_stock else 'OUT OF STOCK' }}</small>
+  <p>{{ p.description or p.use_for }}</p>
+  <form method="post" action="/admin/products/{{ p.id }}/photos" enctype="multipart/form-data">
+    <label for="photos-{{ p.id }}">Product photos (upload 3–5 PNG, JPEG or WebP images; max 5 MB each)</label>
+    <input id="photos-{{ p.id }}" name="photos" type="file" accept="image/png,image/jpeg,image/webp" multiple required>
+    <button>Save 3–5 product photos</button>
+  </form>
   <form method="post" action="/admin/products/{{ p.id }}/price"><input name="price" type="number" min="0" value="{{ p.price }}"><button>Update price</button></form>
   <form method="post" action="/admin/products/{{ p.id }}/stock"><button>{{ 'Mark out of stock' if p.in_stock else 'Mark in stock' }}</button></form>
   <form method="post" action="/admin/products/{{ p.id }}/delete" onsubmit="return confirm('Delete this product?')"><button>Delete</button></form>

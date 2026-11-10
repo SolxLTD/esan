@@ -3,9 +3,21 @@
 {% block content %}
 <a href="/">← Back</a>
 <div class="detail">
+  {% if photos %}
+  <div class="product-gallery">
+    {% for photo in photos %}
+    <a href="{{ photo.image_path }}" target="_blank" rel="noopener noreferrer">
+      <img src="{{ photo.image_path }}" alt="{{ photo.alt_text }}">
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
   <div class="thumb big">{{ p.category[0] }}</div>
+  {% endif %}
   <h1>{{ p.name }}</h1>
-  <p class="price">{{ p.price|naira }} · {{ p.pack }}</p>
+  <p><strong>Pack size:</strong> {{ p.pack }}</p>
+  <h2>Product description</h2>
+  <p>{{ p.description or p.use_for or (p.name ~ ' in the ' ~ p.category ~ ' category.') }}</p>
   <table>
     {% if p.active_ingredient %}<tr><td>Active ingredient</td><td>{{ p.active_ingredient }}</td></tr>{% endif %}
     <tr><td>Category</td><td>{{ p.category }}</td></tr>
@@ -15,14 +27,7 @@
   </table>
   <div class="box warn">Read and follow the label. Wear gloves, mask and goggles when mixing or spraying. Not sure how to use it? <a href="/training">Join a training</a>.</div>
   {% if p.in_stock %}
-  <h2>Order</h2>
-  <form method="post" action="/order/{{ p.id }}">
-    <input name="customer_name" placeholder="Your name" required maxlength="80">
-    <input name="phone" type="tel" placeholder="Phone (e.g. 0803…)" required>
-    <input name="qty" type="number" min="1" value="1" required>
-    <input name="note" placeholder="Delivery location or note" maxlength="300">
-    <button>Send order on WhatsApp</button>
-  </form>
-  {% else %}<div class="box">Currently out of stock. <a href="{{ wa('Hello Esan Farmers, when will ' ~ p.name ~ ' be available?') }}">Ask on WhatsApp</a></div>{% endif %}
+  <a class="btn order-now" href="{{ wa('Hello Esan Farmers, I would like to order ' ~ p.name ~ ' (' ~ p.pack ~ '). Please confirm availability and price.') }}" target="_blank" rel="noopener noreferrer">Order now on WhatsApp</a>
+  {% else %}<div class="box">Currently out of stock. <a href="{{ wa('Hello Esan Farmers, when will ' ~ p.name ~ ' be available?') }}" target="_blank" rel="noopener noreferrer">Ask on WhatsApp</a></div>{% endif %}
 </div>
 {% endblock %}

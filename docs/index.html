@@ -25,6 +25,12 @@ button.b,a.b{background:var(--g);color:#fff;border:0;text-align:center;text-deco
 .chips button{white-space:nowrap;padding:7px 13px;border-radius:20px;background:var(--card);border:1px solid var(--line);color:var(--ink);font-size:.9rem}
 .chips button.on{background:var(--g);color:#fff;border-color:var(--g)}
 h2{font-size:1.1rem;margin:18px 0 8px}
+.sample-showcase{margin:24px 0}
+.sample-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.sample-card{margin:0;padding:10px;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.sample-card img{display:block;width:100%;height:180px;object-fit:contain;border-radius:8px;background:#fff}
+.sample-card figcaption{margin-top:8px;font-weight:700}
+.sample-note{margin:12px 0 0;color:var(--mut);font-size:.9rem}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 @media(min-width:700px){.grid{grid-template-columns:repeat(4,1fr)}}
 .card{text-align:left;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;color:var(--ink);font:inherit;display:flex;flex-direction:column;gap:2px;cursor:pointer}
@@ -94,7 +100,7 @@ if(S.view==="training"){
 a.innerHTML=`<h1>Farmer training</h1><p class="mut">Learn to choose, mix and apply agrochemicals safely and get more from every naira spent.</p>`+T.map(t=>`<div class="box"><b>${esc(t.t)}</b><p>${esc(t.d)}</p><small>${esc(t.du)} · ${naira(t.p)} · Esan · Dates to be announced</small><a class="b" target="_blank" rel="noopener" href="${wa("Hello Esan Farmers, I want to register for: "+t.t)}">Register on WhatsApp</a></div>`).join("");return}
 a.innerHTML=`<section class="hero"><h1>Agrochemicals & training for higher yields</h1><p>Quality inputs, plus hands-on training so you use them safely and correctly.</p><input id="q" type="search" placeholder="Search a product or problem (e.g. maize weeds)" value="${esc(S.q)}" oninput="setQ(this.value)"></section>
 <nav class="chips"><button class="${S.cat?"":"on"}" onclick="setCat('')">All</button>${CATS.map(c=>`<button class="${S.cat===c?"on":""}" onclick="setCat('${c.replace(/'/g,"")}')">${esc(c)}</button>`).join("")}</nav>
-${!S.cat&&!S.q?`<h2>Hot picks</h2><div class="grid">${P.filter(p=>p.f).slice(0,4).map(card).join("")}</div>`:""}
+${!S.cat&&!S.q?`<section class="sample-showcase"><p class="eyebrow">PRODUCT SAMPLES</p><h2>A look at some farm-input products</h2><div class="sample-grid"><figure class="sample-card"><img src="product-samples/fipronil-100-sc.jpeg" alt="Fipronil 100 SC container"><figcaption>Fipronil 100 SC</figcaption></figure><figure class="sample-card"><img src="product-samples/imidacloprid-20-sl.jpeg" alt="Imidacloprid 20% SL bottle"><figcaption>Imidacloprid 20% SL</figcaption></figure><figure class="sample-card"><img src="product-samples/agrochemical-assortment.jpeg" alt="Assortment of agrochemical products"><figcaption>Assorted agrochemical products</figcaption></figure></div><p class="sample-note">Sample photos are for identification only. Packaging, price and availability can vary; confirm current stock and read the product label before ordering.</p></section><h2>Hot picks</h2><div class="grid">${P.filter(p=>p.f).slice(0,4).map(card).join("")}</div>`:""}
 <h2>${S.cat||"All products"}</h2><div class="grid" id="list"></div>
 ${!S.cat&&!S.q?`<h2>Training</h2>${T.slice(0,2).map(t=>`<div class="box"><b>${esc(t.t)}</b><br><small>${esc(t.du)} · ${naira(t.p)}</small></div>`).join("")}<button class="b" onclick="go('training')">See all courses</button>`:""}`;
 renderList()}

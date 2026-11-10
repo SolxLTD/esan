@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 500" role="img" aria-labelledby="title desc">
+  <title id="title">Farmer tending a thriving field</title>
+  <desc id="desc">A farmer stands among green crop rows beneath a bright sky, with hills and a small farm building in the distance.</desc>
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1">
+      <stop stop-color="#b9e8e2"/>
+      <stop offset="1" stop-color="#f4efd6"/>
+    </linearGradient>
+    <linearGradient id="field" x2="0" y2="1">
+      <stop stop-color="#86b85c"/>
+      <stop offset="1" stop-color="#245b36"/>
+    </linearGradient>
+  </defs>
+  <rect width="760" height="500" rx="34" fill="url(#sky)"/>
+  <circle cx="600" cy="104" r="48" fill="#f3c75e"/>
+  <path d="M0 265 160 177l122 75 158-113 164 113 88-56 68 42v111H0Z" fill="#8eaa6b"/>
+  <path d="m0 290 150-71 133 65 161-87 162 89 83-47 71 33v100H0Z" fill="#668b50"/>
+  <path d="M0 320q173-53 340 0t420 0v180H0Z" fill="url(#field)"/>
+  <path d="M0 500q112-159 251-185M92 500q106-163 216-180m105 180q-33-140-63-180m169 180q-2-138-15-180m166 180q43-145 60-180m-472 185q135-105 274-114m-175 114q137-93 299-101m-18 101q116-91 222-99" fill="none" stroke="#bfd17c" stroke-width="8" opacity=".8"/>
+  <path d="M465 255h82v58h-82z" fill="#e9d9a8"/>
+  <path d="m451 260 54-45 55 45" fill="#a85d3e"/>
+  <path d="M482 280h16v33h-16zm34 0h16v33h-16z" fill="#6c5438"/>
+  <g transform="translate(327 207)">
+    <path d="M-23 39q25-24 51 0l17 87h-81z" fill="#bd663d"/>
+    <path d="M-18 43 2 59l21-16 10 72h-60z" fill="#e5ae55"/>
+    <path d="M-11 110h22v69h-22z" fill="#264b39"/>
+    <path d="M12 109h22v70H12z" fill="#355b3b"/>
+    <path d="M-19 176h34v11h-39zm28 0h37v11H9z" fill="#514235"/>
+    <circle cy="17" r="24" fill="#8f5639"/>
+    <path d="M-25 16q1-29 26-30 20 2 26 20l-5 5q-14-12-47 5" fill="#2f372a"/>
+    <path d="M-45 58q-20 27-32 48m102-49q17 19 29 38" fill="none" stroke="#8f5639" stroke-width="14" stroke-linecap="round"/>
+    <path d="M-81 101q10 3 17 10m86-18q13 3 25 14" fill="none" stroke="#d7a24d" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <g fill="#e8f4dc" opacity=".8">
+    <path d="M73 130q20-18 41 0-21 17-41 0m18-9q12-19 29-17-2 17-29 17"/>
+    <path d="M181 111q17-15 35 0-18 15-35 0m17-8q10-16 24-14-2 14-24 14"/>
+  </g>
+</svg>
