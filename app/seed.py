@@ -27,7 +27,7 @@ P = [
 ]
 T = [
     ("Safe Agrochemical Handling & Application", "Reading labels, correct dilution and calibration, PPE, storage, disposal of containers, re-entry and pre-harvest intervals.", "1 day", 10000, "To be announced"),
-    ("Weed, Pest & Disease Management for Maize and Vegetables", "Identifying common problems, choosing the right product, timing of application, avoiding resistance.", "2 days", 20000, "To be announced"),
+    ("Weed, Pest & Disease Management for Crops", "Identifying common crop problems, choosing suitable controls, timing treatments and reducing resistance.", "2 days", 20000, "To be announced"),
     ("Fertilizer Programs for Higher Yield", "Soil basics, choosing NPK vs straight fertilizers, rates, timing and placement.", "1 day", 12000, "To be announced"),
 ]
 

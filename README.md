@@ -10,10 +10,9 @@ Food-production, agrochemical and environmental-services website for Esan, Edo S
 |---|---|---|
 | **Backend + site** | FastAPI app that serves the pages, saves orders and registrations, and runs the admin | `app/` |
 | **Database** | SQLite locally, Postgres in production (`DATABASE_URL`) | `app/models.py` |
-| **Demo page** | Static phone preview with sample data, no backend. Free to host on GitHub Pages | `docs/index.html` |
 | **Logo** | Source logo, plus favicon and app icon used by the site | `assets/`, `app/static/` |
 
-The demo page and the app look alike on purpose, but they are separate: the demo has fixed sample data, while the app reads and writes the database. Deploy the app for real customers; use the demo only to show the idea.
+Run the FastAPI app locally to test the working site and its database-backed features. GitHub stores the source code; deploy the app on Render to make it available online.
 
 ## Run locally
 ```
@@ -29,6 +28,9 @@ pytest
 3. Set `DATABASE_URL`, `ADMIN_PASSWORD`, `BUSINESS_WHATSAPP`. `SECRET_KEY` is generated.
 4. Open `/admin/login` and replace the sample products with real stock.
 
+## Site background video
+The full website serves its muted, looping background video from `app/static/background-video.mp4`. Browsers that disable autoplay or users who prefer reduced motion see the farm illustration fallback instead.
+
 ## Product photos
 Upload 3–5 PNG, JPEG or WebP photos per product from `/admin/products`. Without Cloudinary, files are saved in `app/static/products/`. With Cloudinary configured, photo files go to Cloudinary and their secure URLs and Cloudinary public IDs are saved in the `ProductPhoto` database table. Existing photo records are migrated to include the public ID column when the app starts.
 
@@ -42,9 +44,6 @@ The homepage's **Product Samples** gallery uses illustrative photos from `chemic
 5. Sign in at `/admin`, open **Manage products**, and upload 3–5 photos for each product. The app uploads them to the `esan-farmers/products` Cloudinary folder. Replacing photos or deleting a product also removes the old Cloudinary images.
 
 If `CLOUDINARY_URL` is empty, the app continues to store uploaded images locally. Render's ordinary filesystem is not durable across deploys, so configure Cloudinary before uploading production product photos.
-
-## Demo on GitHub Pages
-Repo Settings > Pages > Deploy from branch > `main` and folder `/docs`.
 
 ## Before launch
 - Replace sample products, prices and NAFDAC numbers in `app/seed.py` (or via `/admin/products`)

@@ -24,7 +24,7 @@ if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "")
 SECRET_KEY = os.getenv("SECRET_KEY", "dev-only-change-me")
-BUSINESS_WHATSAPP = os.getenv("BUSINESS_WHATSAPP", "2340000000000")
+BUSINESS_WHATSAPP = os.getenv("BUSINESS_WHATSAPP", "2348065843125")
 TRAINING_YOUTUBE_URL = os.getenv(
     "TRAINING_YOUTUBE_URL",
     "https://www.youtube.com/results?search_query=Esan+Farmers+agriculture+training",
@@ -39,6 +39,20 @@ engine = create_engine(
 )
 
 
+def migrate_training_titles(session: Session) -> None:
+    legacy = session.exec(select(Training).where(
+        Training.title == "Weed, Pest & Disease Management for Maize and Vegetables"
+    )).all()
+    for training in legacy:
+        training.title = "Weed, Pest & Disease Management for Crops"
+        training.description = (
+            "Identifying common crop problems, choosing suitable controls, timing treatments and reducing resistance."
+        )
+        session.add(training)
+    if legacy:
+        session.commit()
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     SQLModel.metadata.create_all(engine)
@@ -50,6 +64,7 @@ async def lifespan(app: FastAPI):
     with Session(engine) as s:
         if not s.exec(select(Product)).first():
             seed(s)
+        migrate_training_titles(s)
     yield
 
 

@@ -10,30 +10,97 @@
       <a class="btn btn-light" href="/training">Explore training</a>
     </div>
   </div>
-  <img class="hero-illustration" src="/static/images/farm-hero.svg" alt="Farmer tending a thriving green field">
+  <div class="service-carousel" data-service-carousel role="region" aria-label="Esan Farmers services and products" aria-roledescription="carousel">
+    <div class="carousel-slides">
+      <figure class="carousel-slide" data-carousel-slide role="group" aria-roledescription="slide" aria-label="1 of 7">
+        <img src="/static/images/services/food-production.jpg" alt="Farmer working among healthy crops">
+        <figcaption>Food production</figcaption>
+      </figure>
+      <figure class="carousel-slide" data-carousel-slide role="group" aria-roledescription="slide" aria-label="2 of 7" hidden>
+        <img src="/static/images/services/farm-fumigation.jpg" alt="Farm worker spraying crops in a field">
+        <figcaption>Farm fumigation</figcaption>
+      </figure>
+      <figure class="carousel-slide" data-carousel-slide role="group" aria-roledescription="slide" aria-label="3 of 7" hidden>
+        <img src="/static/images/services/home-fumigation.jpg" alt="Technician treating the inside of a home">
+        <figcaption>Home fumigation</figcaption>
+      </figure>
+      <figure class="carousel-slide" data-carousel-slide role="group" aria-roledescription="slide" aria-label="4 of 7" hidden>
+        <img src="/static/images/services/office-fumigation.jpg" alt="Protected technician carrying out pest treatment indoors">
+        <figcaption>Office fumigation</figcaption>
+      </figure>
+      <figure class="carousel-slide" data-carousel-slide role="group" aria-roledescription="slide" aria-label="5 of 7" hidden>
+        <img src="/static/images/product-samples/fipronil-100-sc.jpeg" alt="Fipronil 100 SC container">
+        <figcaption>Farm inputs</figcaption>
+      </figure>
+      <figure class="carousel-slide" data-carousel-slide role="group" aria-roledescription="slide" aria-label="6 of 7" hidden>
+        <img src="/static/images/product-samples/imidacloprid-20-sl.jpeg" alt="Imidacloprid 20% SL bottle">
+        <figcaption>Crop protection</figcaption>
+      </figure>
+      <figure class="carousel-slide" data-carousel-slide role="group" aria-roledescription="slide" aria-label="7 of 7" hidden>
+        <img src="/static/images/product-samples/agrochemical-assortment.jpeg" alt="Assortment of agrochemical products">
+        <figcaption>Agrochemical supplies</figcaption>
+      </figure>
+    </div>
+    <div class="carousel-controls">
+      <button type="button" data-carousel-previous aria-label="Previous slide">‹</button>
+      <div class="carousel-indicators" aria-label="Choose a slide">
+        {% for slide in range(7) %}
+        <button type="button" data-carousel-indicator="{{ loop.index0 }}" aria-label="Show slide {{ loop.index }}" aria-pressed="{{ 'true' if loop.first else 'false' }}"></button>
+        {% endfor %}
+      </div>
+      <button type="button" data-carousel-next aria-label="Next slide">›</button>
+    </div>
+  </div>
 </section>
+<nav class="quick-links" aria-label="Explore Esan Farmers">
+  <a class="quick-link" href="#shop">
+    <span>SHOP</span>
+    <strong>Browse farm inputs</strong>
+    <span>Explore products for your farm.</span>
+  </a>
+  <a class="quick-link" href="#services">
+    <span>SERVICES</span>
+    <strong>Explore fumigation</strong>
+    <span>Find services for farms, homes and businesses.</span>
+  </a>
+  <a class="quick-link" href="/training">
+    <span>LEARNING</span>
+    <strong>Build farm skills</strong>
+    <span>Open practical training and field resources.</span>
+  </a>
+</nav>
 <section id="services" class="section">
   <p class="eyebrow">WHAT WE DO</p>
   <h2>Support for every step of the farm journey</h2>
   <div class="service-grid">
     <article class="service-card">
-      <img class="service-image" src="/static/images/food-production.svg" alt="Maize and vegetables growing on a healthy farm">
+      <img class="service-image" src="/static/images/services/food-production.jpg" alt="Farmer working among healthy crops">
       <h3>Food production</h3>
       <p>Build productive farms with practical crop-production guidance, better growing practices and access to essential inputs.</p>
     </article>
     <article class="service-card">
-      <img class="service-image" src="/static/images/safe-farming.svg" alt="Farmer wearing protective clothing while inspecting crops">
+      <img class="service-image" src="/static/images/product-samples/agrochemical-assortment.jpeg" alt="Assortment of agrochemical products">
       <h3>Agrochemical supplies</h3>
       <p>Find crop-protection products, fertilizers and safety equipment, with training to support responsible use.</p>
       <a href="#shop">Browse products</a>
     </article>
     <article class="service-card">
-      <img class="service-image" src="/static/images/fumigation-service.svg" alt="Trained fumigation professional preparing to service a building">
       <h3>Environmental services</h3>
       <p>Indoor and outdoor site fumigation for homes, businesses and other facilities. Contact us to discuss the site, service and safety requirements.</p>
+      <div class="service-photo-grid">
+        <figure>
+          <img src="/static/images/services/farm-fumigation.jpg" alt="Farm worker spraying crops in a field">
+        </figure>
+        <figure>
+          <img src="/static/images/services/home-fumigation.jpg" alt="Technician treating the inside of a home">
+        </figure>
+        <figure>
+          <img src="/static/images/services/office-fumigation.jpg" alt="Protected technician carrying out pest treatment indoors">
+        </figure>
+      </div>
       <div class="service-actions">
-        <a href="{{ wa('Hello Esan Farmers, I would like to ask about indoor fumigation services.') }}" target="_blank" rel="noopener noreferrer">Indoor fumigation</a>
-        <a href="{{ wa('Hello Esan Farmers, I would like to ask about outdoor fumigation services.') }}" target="_blank" rel="noopener noreferrer">Outdoor fumigation</a>
+        <a href="{{ wa('Hello Esan Farmers, I would like to ask about farm fumigation services.') }}" target="_blank" rel="noopener noreferrer">Farm fumigation</a>
+        <a href="{{ wa('Hello Esan Farmers, I would like to ask about home fumigation services.') }}" target="_blank" rel="noopener noreferrer">Home fumigation</a>
       </div>
     </article>
   </div>
@@ -42,7 +109,7 @@
   <h2>Looking for a farm input?</h2>
   <p>Search products by name or the crop problem you want to address.</p>
   <form method="get">
-    <input name="q" aria-label="Search products" placeholder="e.g. maize weeds" value="{{ q }}">
+    <input name="q" aria-label="Search products" placeholder="E.g. maize weeds" value="{{ q }}">
     <button>Search products</button>
   </form>
 </section>
@@ -81,7 +148,7 @@
 <h2>Learn practical skills for a stronger harvest</h2>
 <p>Join a course, read our field guide or explore video lessons to build your farming knowledge.</p>
 {% for t in trainings %}
-<div class="box"><strong>{{ t.title }}</strong><br><small>{{ t.duration }} · {{ t.price|naira }}</small></div>
+<div class="box"><strong>{{ t.title }}</strong><br><small>{{ t.duration }}</small></div>
 {% endfor %}
 <div class="hero-actions"><a class="btn" href="/training">Explore training resources</a><a class="text-link" href="/register">Register as a member</a></div>
 </section>
